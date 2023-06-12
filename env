@@ -1,11 +1,11 @@
 BATTLE_BOT=safest
-WEBSOCKET_URI=sim.smogon.com:8000
-PS_USERNAME=MyUsername
-PS_PASSWORD=MyPassword
-BOT_MODE=SEARCH_LADDER
-POKEMON_MODE=gen7randombattle
+WEBSOCKET_URI=sim.psim.us:8000
+PS_USERNAME=whimsicaldreams
+PS_PASSWORD=ASSdreamer
+BOT_MODE=CHALLENGE_USER
+POKEMON_MODE=gen8randombattle
 RUN_COUNT=1
 
-USER_TO_CHALLENGE=SomeOtherPerson
+USER_TO_CHALLENGE=research-scientist
 TEAM_NAME=gen8/ou/clef_sand
 SAVE_REPLAY=False
