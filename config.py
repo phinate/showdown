@@ -68,24 +68,40 @@ class _ShowdownConfig:
     log_to_file: bool
     log_handler: Union[CustomRotatingFileHandler, logging.StreamHandler]
 
-    def configure(self):
-        self.battle_bot_module = env("BATTLE_BOT")
-        self.websocket_uri = env("WEBSOCKET_URI")
-        self.username = env("PS_USERNAME")
-        self.password = env("PS_PASSWORD")
-        self.bot_mode = env("BOT_MODE")
-        self.pokemon_mode = env("POKEMON_MODE")
+    def configure(self, env=True, **kwargs):
+        if not env:
+            self.battle_bot_module = kwargs.get("battle_bot_module")
+            self.websocket_uri = kwargs.get("websocket_uri")
+            self.username = kwargs.get("username")
+            self.password = kwargs.get("password")
+            self.bot_mode = kwargs.get("bot_mode")
+            self.pokemon_mode = kwargs.get("pokemon_mode")
+            self.run_count = kwargs.get("run_count")
+            self.team = kwargs.get("team")
+            self.user_to_challenge = kwargs.get("user_to_challenge")
+            self.save_replay = kwargs.get("save_replay")
+            self.room_name = kwargs.get("room_name")
+            self.damage_calc_type = kwargs.get("damage_calc_type")
+            self.log_level = kwargs.get("log_level")
+            self.log_to_file = kwargs.get("log_to_file")
+        else:
+            self.battle_bot_module = env("BATTLE_BOT")
+            self.websocket_uri = env("WEBSOCKET_URI")
+            self.username = env("PS_USERNAME")
+            self.password = env("PS_PASSWORD")
+            self.bot_mode = env("BOT_MODE")
+            self.pokemon_mode = env("POKEMON_MODE")
 
-        self.run_count = env.int("RUN_COUNT", 1)
-        self.team = env("TEAM_NAME", None)
-        self.user_to_challenge = env("USER_TO_CHALLENGE", None)
+            self.run_count = env.int("RUN_COUNT", 1)
+            self.team = env("TEAM_NAME", None)
+            self.user_to_challenge = env("USER_TO_CHALLENGE", None)
 
-        self.save_replay = env.bool("SAVE_REPLAY", False)
-        self.room_name = env("ROOM_NAME", None)
-        self.damage_calc_type = env("DAMAGE_CALC_TYPE", "average")
+            self.save_replay = env.bool("SAVE_REPLAY", False)
+            self.room_name = env("ROOM_NAME", None)
+            self.damage_calc_type = env("DAMAGE_CALC_TYPE", "average")
 
-        self.log_level = env("LOG_LEVEL", "DEBUG")
-        self.log_to_file = env.bool("LOG_TO_FILE", False)
+            self.log_level = env("LOG_LEVEL", "DEBUG")
+            self.log_to_file = env.bool("LOG_TO_FILE", False)
 
         self.validate_config()
 

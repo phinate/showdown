@@ -42,8 +42,8 @@ def check_dictionaries_are_unmodified(original_pokedex, original_move_json):
         logger.debug("Pokedex JSON unmodified!")
 
 
-async def showdown():
-    ShowdownConfig.configure()
+async def showdown(env=True, **config_kwargs):
+    ShowdownConfig.configure(env, **config_kwargs)
     init_logging(
         ShowdownConfig.log_level,
         ShowdownConfig.log_to_file
